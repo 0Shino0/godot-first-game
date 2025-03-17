@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuug1hfi8euyr"]
+
+[ext_resource type="Texture2D" uid="uid://cnwixdnyjrfyy" path="res://asset_bundle/AssetBundle/Sprites/ForestBackground.png" id="1_7sqdv"]
+[ext_resource type="PackedScene" uid="uid://bwjuoy6bfw0dq" path="res://Scenes/player.tscn" id="2_gwdiv"]
+[ext_resource type="PackedScene" uid="uid://cosyey0vxii3b" path="res://Scenes/Slime.tscn" id="3_d3upd"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ewwa8"]
+distance = -138.0
+
+[node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Background 1" type="Sprite2D" parent="."]
+position = Vector2(120, 0)
+texture = ExtResource("1_7sqdv")
+metadata/_edit_lock_ = true
+
+[node name="Background 2" type="Sprite2D" parent="."]
+position = Vector2(-120, 0)
+texture = ExtResource("1_7sqdv")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.4, 2.4)
+metadata/_edit_lock_ = true
+
+[node name="Area2D" parent="." instance=ExtResource("3_d3upd")]
+position = Vector2(217, 82)
+
+[node name="Player" parent="." instance=ExtResource("2_gwdiv")]
+position = Vector2(-197, 73)
+
+[node name="Bonudary" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bonudary"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bonudary/StaticBody2D"]
+position = Vector2(-0.135, -0.875)
+shape = SubResource("WorldBoundaryShape2D_ewwa8")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Bonudary"]
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bonudary/StaticBody2D4"]
+position = Vector2(-1.56462e-05, -179)
+shape = SubResource("WorldBoundaryShape2D_ewwa8")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Bonudary"]
+position = Vector2(-0.41, -0.54)
+rotation = 1.57429
+constant_linear_velocity = Vector2(0.09, 0.445)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bonudary/StaticBody2D2"]
+position = Vector2(0, 101.67)
+shape = SubResource("WorldBoundaryShape2D_ewwa8")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Bonudary"]
+position = Vector2(-0.41, -0.54)
+rotation = -1.5708
+constant_linear_velocity = Vector2(0.09, 0.445)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bonudary/StaticBody2D3"]
+position = Vector2(0, 101.67)
+shape = SubResource("WorldBoundaryShape2D_ewwa8")
