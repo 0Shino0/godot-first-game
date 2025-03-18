@@ -2,7 +2,7 @@ extends CanvasLayer
 
 
 @export var pause_panel: Panel
-@export var bgm_player: AudioStreamPlayer
+#@export var bgm_player: AudioStreamPlayer
 @export var pause_sound: AudioStreamPlayer
 
 var pause_time: float
@@ -14,13 +14,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var volume_linear = db_to_linear(bgm_player.volume_db)
-	var target_volume = 0.0 if get_tree().paused else 1.0
-	volume_linear = lerp(volume_linear, target_volume, delta * 15.0)
-#	# 转化为计算好的分贝值
-	bgm_player.volume_db = linear_to_db(volume_linear)
-	
-	bgm_player.stream_paused = get_tree().paused and Time.get_ticks_msec() > pause_time + 300
+	#var volume_linear = db_to_linear(bgm_player.volume_db)
+	#var target_volume = 0.0 if get_tree().paused else 1.0
+	#volume_linear = lerp(volume_linear, target_volume, delta * 15.0)
+##	# 转化为计算好的分贝值
+	#bgm_player.volume_db = linear_to_db(volume_linear)
+	#
+	#bgm_player.stream_paused = get_tree().paused and Time.get_ticks_msec() > pause_time + 300
 	pass
 
 func _input(event: InputEvent) -> void:
@@ -29,7 +29,6 @@ func _input(event: InputEvent) -> void:
 			if not get_tree().paused:
 				pause()
 			else:
-				print(event.keycode)
 				unpause()
 
 func pause():
@@ -43,5 +42,5 @@ func unpause():
 	pause_panel.visible = false
 	pause_sound.play()
 	
-func quit_game():
+func quit():
 	get_tree().quit()

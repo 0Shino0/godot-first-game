@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cuug1hfi8euyr"]
+[gd_scene load_steps=12 format=3 uid="uid://cuug1hfi8euyr"]
 
 [ext_resource type="Texture2D" uid="uid://cnwixdnyjrfyy" path="res://asset_bundle/AssetBundle/Sprites/ForestBackground.png" id="1_7sqdv"]
 [ext_resource type="Script" path="res://Script/GameManager.gd" id="1_8jex0"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://b8w6utr3suf0a" path="res://asset_bundle/AssetBundle/PauseMenu/pause_pressed.png" id="7_t1mjn"]
 [ext_resource type="Texture2D" uid="uid://crtecn0bkqrav" path="res://asset_bundle/AssetBundle/PauseMenu/pause_hover.png" id="8_7uc56"]
 [ext_resource type="Theme" uid="uid://u0gjagwj8x0w" path="res://pause_theme.tres" id="9_5740w"]
-[ext_resource type="AudioStream" uid="uid://dxmnoddluossq" path="res://asset_bundle/AssetBundle/PauseMenu/button-click.wav" id="11_glav8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ewwa8"]
 distance = -138.0
@@ -130,11 +129,9 @@ horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="CanvasLayer/Game Over Label"]
 
-[node name="PauseUI" type="CanvasLayer" parent="CanvasLayer" node_paths=PackedStringArray("pause_panel", "pause_sound")]
-process_mode = 3
+[node name="PauseUI" type="CanvasLayer" parent="CanvasLayer" node_paths=PackedStringArray("pause_panel")]
 script = ExtResource("6_fv3aa")
 pause_panel = NodePath("PausePanel")
-pause_sound = NodePath("PauseSound")
 
 [node name="TextureButton" type="TextureButton" parent="CanvasLayer/PauseUI"]
 anchors_preset = 1
@@ -207,9 +204,6 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
 text = "Quit"
-
-[node name="PauseSound" type="AudioStreamPlayer" parent="CanvasLayer/PauseUI"]
-stream = ExtResource("11_glav8")
 
 [connection signal="timeout" from="Timer" to="." method="_spawn_slime"]
 [connection signal="pressed" from="CanvasLayer/PauseUI/TextureButton" to="CanvasLayer/PauseUI" method="pause"]
