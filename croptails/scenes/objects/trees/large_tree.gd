@@ -14,6 +14,13 @@ func _ready() -> void:
 	
 func on_hurt(hit_damage: int) -> void:
 	damage_component.apply_damage(hit_damage)
+	#受击时设置shader摇动强度
+	material.set_shader_parameter("shake_intensity", 1.0)
+
+	#等待1秒，将摇动强度重置为0
+	await get_tree().create_timer(1.0).timeout
+	material.set_shader_parameter("shake_intensity", 0.0)
+
 	
 	
 func on_max_damaged_reached() -> void:

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Croptails"
-run/main_scene="res://scenes/test/test_scene_objects_trees.tscn"
+run/main_scene="res://scenes/test/test_scene_tilemap_layer_y_sort.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
 [display]

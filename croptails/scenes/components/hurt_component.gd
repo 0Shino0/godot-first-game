@@ -1,3 +1,4 @@
+# 受击组件-挂载在可交互物体下，用于处理受击事件
 class_name HurtComponent
 extends Area2D
 
