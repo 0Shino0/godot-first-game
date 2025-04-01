@@ -1,6 +1,6 @@
 extends NodeState
 
-@export var character: CharacterBody2D
+@export var character: NonPlayableCharacter
 @export var animated_sprite_2d: AnimatedSprite2D
 @export var navigation_agent_2d: NavigationAgent2D
 @export var min_speed: float = 5.0
@@ -36,6 +36,8 @@ func _on_process(_delta : float) -> void:
 func _on_physics_process(_delta : float) -> void:
 	if navigation_agent_2d.is_navigation_finished():
 		set_movement_target()
+		#当前步行周期 +1
+		character.current_walk_cycles += 1
 		return
 	
 	#获取一个可以动的位置
@@ -58,7 +60,8 @@ func on_safe_velocity_computed(safe_velocity: Vector2) -> void:
 	character.move_and_slide()
 
 func _on_next_transitions() -> void:
-	if navigation_agent_2d.is_navigation_finished():
+	#当前步行周期与步行周期相等，表示到达 循环
+	if character.current_walk_cycles == character.walk_cycles:
 		#速度向量置0
 		character.velocity = Vector2.ZERO
 		transition.emit("idle")
@@ -66,6 +69,7 @@ func _on_next_transitions() -> void:
 
 func _on_enter() -> void:
 	animated_sprite_2d.play("walk")
+	character.current_walk_cycles = 0
 
 
 func _on_exit() -> void:

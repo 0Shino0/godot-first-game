@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Croptails"
-run/main_scene="res://scenes/test/test_scene_npc_chicken.tscn"
+run/main_scene="res://scenes/test/test_scene_npc_cow.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
 [display]
@@ -69,6 +69,7 @@ hit={
 2d_physics/layer_1="Ground"
 2d_navigation/layer_1="Chicken Navigation"
 2d_physics/layer_2="Player"
+2d_navigation/layer_2="Cows Navigation"
 2d_physics/layer_3="Interactable"
 2d_physics/layer_4="Tool"
 

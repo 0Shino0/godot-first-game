@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cbupf8kwpwe1h"]
+[gd_scene load_steps=14 format=3 uid="uid://cbupf8kwpwe1h"]
 
+[ext_resource type="Script" path="res://scenes/characters/chicken/chicken.gd" id="1_ek8p3"]
 [ext_resource type="Texture2D" uid="uid://c5b8ij5jkrkfe" path="res://assets/game/characters/free_chicken_sprites.png" id="1_tgho4"]
 [ext_resource type="Script" path="res://scripts/state_machine/node_state_machine.gd" id="2_gaevs"]
-[ext_resource type="Script" path="res://scenes/characters/chicken/idle_state.gd" id="3_6wnpp"]
-[ext_resource type="Script" path="res://scenes/characters/chicken/walk_state.gd" id="4_p4nff"]
+[ext_resource type="Script" path="res://scenes/characters/npc_state/idle_state.gd" id="3_6wnpp"]
+[ext_resource type="Script" path="res://scenes/characters/npc_state/walk_state.gd" id="4_p4nff"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_83yg4"]
 atlas = ExtResource("1_tgho4")
@@ -66,6 +67,7 @@ radius = 4.47214
 [node name="Chicken" type="CharacterBody2D"]
 z_index = 1
 slide_on_ceiling = false
+script = ExtResource("1_ek8p3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6)
