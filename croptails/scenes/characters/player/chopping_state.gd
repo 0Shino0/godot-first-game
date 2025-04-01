@@ -24,6 +24,7 @@ func _on_next_transitions() -> void:
 
 
 func _on_enter() -> void:
+	
 	if player.player_direction == Vector2.UP:
 		animated_sprite_2d.play("chopping_back")
 		hit_component_collision_shape.position = Vector2(0, -18)
@@ -39,7 +40,8 @@ func _on_enter() -> void:
 	else:
 		animated_sprite_2d.play("chopping_front")
 		
-	#激活碰撞形状		
+	await get_tree().create_timer(0.3).timeout
+	#激活碰撞形状
 	hit_component_collision_shape.disabled = false
 
 func _on_exit() -> void:

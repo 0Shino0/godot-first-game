@@ -10,9 +10,12 @@ var node_states : Dictionary = {}
 var current_node_state : NodeState
 # 当前状态节点的名称
 var current_node_state_name : String
+#父节点名称
+var parent_node_name: String
 
 # 准备函数，在节点准备好时调用
 func _ready() -> void:
+	parent_node_name = get_parent().name
 	# 遍历所有子节点
 	for child in get_children():
 		# 如果子节点是 NodeState 类型
@@ -28,6 +31,8 @@ func _ready() -> void:
 		initial_node_state._on_enter()
 		# 设置当前状态为初始状态
 		current_node_state = initial_node_state
+		#置当前状态机的名字
+		current_node_state_name = current_node_state.name.to_lower()
 
 # 每帧调用的处理函数
 func _process(delta : float) -> void:
@@ -36,7 +41,7 @@ func _process(delta : float) -> void:
 		# 调用当前状态的处理方法
 		current_node_state._on_process(delta)
 		# 打印当前状态名称
-	#print("Current State: ", current_node_state_name)
+	print(parent_node_name, " Current State: ", current_node_state_name)
 
 # 每帧物理处理函数
 func _physics_process(delta: float) -> void:
