@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="Croptails"
-run/main_scene="res://scenes/test/test_scene_npc_and navigation.tscn"
+run/main_scene="res://scenes/test/test_scene_game_screen_ui.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+
+[autoload]
+
+ToolManager="*res://scripts/globals/tool_manager.gd"
 
 [display]
 
@@ -65,6 +69,11 @@ walk_right={
 hit={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(99, 14),"global_position":Vector2(108, 60),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+realease_tool={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(76, 9),"global_position":Vector2(85, 55),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
 

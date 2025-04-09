@@ -41,7 +41,7 @@ func _process(delta : float) -> void:
 		# 调用当前状态的处理方法
 		current_node_state._on_process(delta)
 		# 打印当前状态名称
-	print(parent_node_name, " Current State: ", current_node_state_name)
+	#print(parent_node_name, " Current State: ", current_node_state_name)
 
 # 每帧物理处理函数
 func _physics_process(delta: float) -> void:
